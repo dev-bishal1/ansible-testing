@@ -1,0 +1,14 @@
+- name: Webserver Setup
+  hosts: websrvrgroup
+  become: yes
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Start httpd 
+      service:
+        name: httpd
+        state: started
+        enabled: yes
