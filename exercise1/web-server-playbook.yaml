@@ -22,9 +22,22 @@
           - wget
           - unzip
 
-- name: Website Setup
+- name: Copy the website setup file to the remote machine 
   hosts: websrvrgroup
   become: yes
   tasks:
     - name: Fetch website template from tooplate and serve them using httpd
-      shell: website_setup.sh
+      copy:
+        src: website_seup.sh
+        dest: /home/centos/
+        owner: centos
+        mode: 0777
+
+- name: Website Setup
+  hosts: websrvrgroup
+  become: yes
+  tasks: 
+    - name: Execute the script that setup the website
+      shell:
+        chdri: /home/centos/
+        cmd: /usr/bin/bash webiste_setup.sh
