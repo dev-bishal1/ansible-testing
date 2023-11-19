@@ -12,3 +12,19 @@
         name: httpd
         state: started
         enabled: yes
+
+    - name: Install wget and unzip
+      yum: 
+        name: "{{ packages }}"
+        state: present
+      vars: 
+        packages:
+          - wget
+          - unzip
+
+- name: Website Setup
+  hosts: websrvrgroup
+  become: yes
+  tasks:
+    - name: Fetch website template from tooplate and serve them using httpd
+      shell: website_setup.sh
