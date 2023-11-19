@@ -38,7 +38,6 @@
   become: yes
   tasks: 
     - name: Execute the script that setup the website
-      shell:
-        args:
+      ansible.builtin.shell:
           chdir: /home/centos/
-          executable: /bin/bash website_setup.sh
+          cmd: ./website_setup.sh
