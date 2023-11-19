@@ -2,15 +2,13 @@
   hosts: websrvrgroup
   become: yes
   tasks:
-    - name: Install all the required packages
+    - name: Install required packages
       yum:
-        name: "{{ packages }}"
-        state: present
-      vars:
-        packages:
+        name:
           - httpd
           - wget
           - unzip
+        state: present
 
     - name: Start and enable the httpd service
       service:
@@ -19,43 +17,24 @@
         enabled: yes
 
 
-- name: Copy the website setup file to the remote web01 machine 
-  hosts: web01
+- name: Copy and Execute Website Setup Script
+  hosts: websrvrgroup
+  become: yes
   tasks:
     - name: Copy the setup file
       copy:
-        src: barista_website_setup.sh
+        src: "{{ item.src }}"
         dest: /home/centos/
         owner: centos
         mode: 0777
+      with_items:
+        - { src: 'barista_website_setup.sh' }
+        - { src: 'gotto_job_website_setup.sh' }
 
-
-- name: Copy the website setup file to the remote web02 machine 
-  hosts: web02
-  tasks:
-    - name: Copy the setup file
-      copy:
-        src: gotto_job_website_setup.sh
-        dest: /home/centos/
-        owner: centos
-        mode: 0777
-
-
-- name: Execute the website setup script in remote machine web01
-  hosts: web01
-  become: yes
-  tasks: 
-    - name: Execute the script that setup the website
+    - name: Execute the website setup script
       ansible.builtin.shell:
-          chdir: /home/centos/
-          cmd: ./barista_website_setup.sh
-
-
-- name: Execute the website setup script in remote machine web02
-  hosts: web02
-  become: yes
-  tasks: 
-    - name: Execute the script that setup the website
-      ansible.builtin.shell:
-          chdir: /home/centos/
-          cmd: ./gotto_job_website_setup.sh
+        chdir: /home/centos/
+        cmd: "./{{ item.script }}"
+      with_items:
+        - { script: 'barista_website_setup.sh' }
+        - { script: 'gotto_job_website_setup.sh' }
