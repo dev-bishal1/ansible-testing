@@ -39,5 +39,6 @@
   tasks: 
     - name: Execute the script that setup the website
       shell:
-        chdri: /home/centos/
-        cmd: ./website_setup.sh
+        args:
+          chdri: /home/centos/
+          cmexecutabled: /bin/bash website_setup.sh
