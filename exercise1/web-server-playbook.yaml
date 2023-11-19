@@ -18,7 +18,7 @@
 
 
 - name: Copy and Execute Website Setup Script
-  hosts: websrvrgroup
+  hosts: web01:web02
   become: yes
   tasks:
     - name: Copy the setup file
