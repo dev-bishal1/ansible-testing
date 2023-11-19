@@ -28,7 +28,7 @@
   tasks:
     - name: Fetch website template from tooplate and serve them using httpd
       copy:
-        src: website_seup.sh
+        src: website_setup.sh
         dest: /home/centos/
         owner: centos
         mode: 0777
@@ -40,4 +40,4 @@
     - name: Execute the script that setup the website
       shell:
         chdri: /home/centos/
-        cmd: /usr/bin/bash webiste_setup.sh
+        cmd: ./website_setup.sh
