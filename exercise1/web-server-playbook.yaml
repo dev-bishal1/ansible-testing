@@ -40,5 +40,5 @@
     - name: Execute the script that setup the website
       shell:
         args:
-          chdri: /home/centos/
-          cmexecutabled: /bin/bash website_setup.sh
+          chdir: /home/centos/
+          executable: /bin/bash website_setup.sh
