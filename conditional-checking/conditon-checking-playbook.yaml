@@ -6,20 +6,24 @@
       yum:
         name: ntp
         state: present
+      when: ansible_pkg_mgr == "yum"
     
     - name: Install npt on ubuntu machine
       apt:
         name: ntp
         state: present
+      when: ansible_pkg_mgr == "apt"
 
     - name: Start and enable ntpd service in centos
       service:
         name: ntpd
         state: started
         enabled: true
+      when: ansible_os_family == "RedHat"
 
     - name: Start and enable ntp service in ubuntu
       service:
         name: ntp
         state: started
         enabled: true
+      when: ansible_os_family == "Debian"
