@@ -44,6 +44,7 @@
     
     - name: Add user to all the host machine
       user:
-        name: "{{ usernames }}"
+        name: "{{ item }}"
         groups: devops
         shell: /bin/bash
+      loop: "{{ usernames }}"
