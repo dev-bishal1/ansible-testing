@@ -1,0 +1,25 @@
+- name: Install ntp service
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install ntp on centos machine
+      yum:
+        name: ntp
+        state: present
+    
+    - name: Install npt on ubuntu machine
+      apt:
+        name: ntp
+        state: present
+
+    - name: Start and enable ntpd service in centos
+      service:
+        name: ntpd
+        state: started
+        enabled: true
+
+    - name: Start and enable ntp service in ubuntu
+      service:
+        name: ntp
+        state: started
+        enabled: true
