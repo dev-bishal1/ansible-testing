@@ -4,15 +4,24 @@
   tasks:
     - name: Install ntp on centos machine
       yum:
-        name: ntp
+        name: "{{ item }}"
         state: present
       when: ansible_pkg_mgr == "yum"
+      loop:
+        - ntp
+        - wget
+        - curl
+
     
     - name: Install npt on ubuntu machine
       apt:
-        name: ntp
+        name: "{{ item }}"
         state: present
       when: ansible_pkg_mgr == "apt"
+      loop:
+        - ntp
+        - wget
+        - curl
 
     - name: Start and enable ntpd service in centos
       service:
