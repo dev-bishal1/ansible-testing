@@ -36,3 +36,14 @@
         state: started
         enabled: true
       when: ansible_os_family == "Debian"
+
+    - name: Add group to all the host machine
+      group:
+        name: devops
+        state: present
+    
+    - name: Add user to all the host machine
+      user:
+        name: "{{ usernames }}"
+        groups: devops
+        shell: /bin/bash
