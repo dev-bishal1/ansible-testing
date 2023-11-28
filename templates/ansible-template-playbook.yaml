@@ -2,7 +2,7 @@
   hosts: all
   become: yes
   vars: 
-    userName: Bishal Rayamajhi
+    user_name: Bishal Rayamajhi
   tasks:
     - name: Install httpd in centos machine
       yum:
@@ -41,7 +41,7 @@
         dest: /var/www/html/index.html
         mode: '0644'
         owner: root
-      when: ansible_os_family == "RedHat""
+      when: ansible_os_family == "RedHat"
       notify: Restart httpd server
 
     - name: Replace the apache default page in ubuntu machine with custom template
