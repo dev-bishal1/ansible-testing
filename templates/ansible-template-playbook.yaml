@@ -1,6 +1,8 @@
 - name: Ansible template testing
   hosts: all
   become: yes
+  vars: 
+    - userName: Bishal Rayamajhi
   tasks:
     - name: Install httpd in centos machine
       yum:
@@ -31,6 +33,36 @@
         name: apache2
         state: started
         enabled: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Replace the apache default page in centos machine with custom template
+      template:
+        src: /welcome.j2
+        dest: /var/www/html/index.html
+        mode: '0644'
+        owner: root
+      when: ansible_os_family == "RedHat""
+      notify: Restart httpd server
+
+    - name: Replace the apache default page in ubuntu machine with custom template
+      template:
+        src: /welcome.j2
+        dest: /var/www/html/index.html
+        mode: '0644'
+        owner: root
+      when: ansible_os_family == "Debian"
+      notify: Restart apache2 server
+
+  handlers:
+    - name: Restart apache2 server
+      service:
+        name: apache2
+        state: restarted
+    
+    - name: Restart httpd server
+      service:
+        name: httpd
+        state: restarted
 
   
 
