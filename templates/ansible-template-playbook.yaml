@@ -8,10 +8,10 @@
         state: present
       when: ansible_pkg_mgr == "yum"
     
-    - name: Install apche2 in ubuntu machine
+    - name: Install apache2 in ubuntu machine
       apt:
         name: apache2
-        state: present
+        state: latest
       when: ansible_pkg_mgr == "apt"
 
     - name: Start and enable httpd service in centos machine
