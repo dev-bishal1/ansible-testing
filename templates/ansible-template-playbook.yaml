@@ -2,7 +2,7 @@
   hosts: all
   become: yes
   vars: 
-    - userName: Bishal Rayamajhi
+    userName: Bishal Rayamajhi
   tasks:
     - name: Install httpd in centos machine
       yum:
