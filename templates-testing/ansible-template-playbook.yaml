@@ -37,7 +37,7 @@
 
     - name: Replace the apache default page in centos machine with custom template
       template:
-        src: /welcome.j2
+        src: templates/welcome.j2
         dest: /var/www/html/index.html
         mode: '0644'
         owner: root
@@ -46,7 +46,7 @@
 
     - name: Replace the apache default page in ubuntu machine with custom template
       template:
-        src: /welcome.j2
+        src: templates/welcome.j2
         dest: /var/www/html/index.html
         mode: '0644'
         owner: root
