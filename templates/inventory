@@ -1,0 +1,21 @@
+ubuntu_machine ansible_host=172.31.19.72
+centos_machine ansible_host=172.31.28.223
+
+[ubuntu_machine_group]
+ubuntu_machine
+
+[centos_machine_group]
+centos_machine
+
+[ubuntu_machine_group:vars]
+ansible_user=ubuntu
+
+[centos_machine_group:vars]
+ansible_user=centos
+
+[parent_server_group:children]
+ubuntu_machine_group
+centos_machine_group
+
+[parent_server_group:vars]
+ansible_ssh_private_key_file=../web-key.pem
