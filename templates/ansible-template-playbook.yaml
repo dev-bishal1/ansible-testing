@@ -7,11 +7,15 @@
         name: httpd
         state: present
       when: ansible_pkg_mgr == "yum"
+
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
     
     - name: Install apache2 in ubuntu machine
       apt:
         name: apache2
-        state: latest
+        state: present
       when: ansible_pkg_mgr == "apt"
 
     - name: Start and enable httpd service in centos machine
