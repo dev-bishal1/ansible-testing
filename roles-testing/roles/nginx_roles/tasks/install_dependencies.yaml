@@ -1,0 +1,13 @@
+- name: Install nginx package in redhat os
+  yum: 
+    name: nginx
+    state: present
+  when: ansible_pkg_mgr == "yum"
+  notify: Start and enable nginx server
+
+- name: Install nginx package on debian os
+  apt:
+    name: nginx
+    state: present
+  when: ansible_pkg_mgr == "apt"
+  notify: Start and enable nginx server

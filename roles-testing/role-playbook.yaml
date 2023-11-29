@@ -1,0 +1,7 @@
+- name: Configure nginx on all the installed machine
+  hosts: all
+  become: true
+  roles:
+    - nginx_roles
+  
+
