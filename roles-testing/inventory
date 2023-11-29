@@ -1,5 +1,5 @@
-ubuntu_machine_1 ansible_host=
-centos_machine_1 ansible_host=
+ubuntu_machine_1 ansible_host=54.175.104.205
+centos_machine_1 ansible_host=54.242.212.3
 
 [ubuntu_machine_group]
 ubuntu_machine_1
