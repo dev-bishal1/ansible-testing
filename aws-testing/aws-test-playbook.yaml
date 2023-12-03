@@ -6,8 +6,8 @@
       ec2_key:
         name: test-key-pair
         region: us-east-1
-      register: key-test
+      register: keyout
 
-    - name: Debug the generated key-test
+    - name: Debug the generated key
       debug:
-        var: key-test
+        var: keyout
