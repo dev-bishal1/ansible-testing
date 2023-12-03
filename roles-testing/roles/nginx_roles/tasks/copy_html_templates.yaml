@@ -1,0 +1,20 @@
+- name: Copy html template to the redhat machine
+  template:
+    src: templates/welcome.j2
+    dest: /usr/share/nginx/html/index.html
+    mode: '0644'
+    owner: root
+  vars:
+    machine_name: Centos
+  when: ansible_os_family == 'RedHat'
+
+- name: Copy html template to the debain machine
+  template:
+    src: templates/welcome.j2
+    dest: /usr/share/nginx/html/index.html
+    mode: '0644'
+    owner: root
+  vars:
+    machine_name: Ubuntu
+  when: ansible_os_family == 'Debian'
+  
