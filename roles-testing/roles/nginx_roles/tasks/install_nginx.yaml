@@ -11,7 +11,10 @@
   
 - name: Install nginx package in redhat os
   yum: 
-    name: nginx
+    name: 
+      - nginx
+      - certbot
+      - python3-certbot-nginx
     state: present
   when: ansible_pkg_mgr == "yum"
   notify:
@@ -19,7 +22,10 @@
 
 - name: Install nginx package on debian os
   apt:
-    name: nginx
+    name: 
+      - nginx
+      - certbot
+      - python3-certbot-nginx
     state: present
   when: ansible_pkg_mgr == "apt"
   notify:

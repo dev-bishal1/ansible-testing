@@ -1,3 +1,5 @@
-- include_tasks: install_dependencies.yaml
-
+- include_tasks: update_pkg_manager.yaml
+- include_tasks: install_nginx.yaml
+- include_tasks: certbot_configuration.yaml
+- include_tasks: copy_conf_files.yaml
 - include_tasks: copy_html_templates.yaml

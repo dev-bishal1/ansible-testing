@@ -1,0 +1,21 @@
+- name: Install Certbot in centos machine
+  yum:
+    name: "{{ certbot_dependency }}"
+    state: present
+  when: ansible_pkg_mgr == "yum"
+
+- name: Install Certbot in ubuntu machine
+  apt:
+    name: "{{ certbot_dependency }}"
+    state: present
+  when: ansible_pkg_mgr == "apt"
+
+- name: Obtain/renew SSL certificates with Certbot
+  command: "certbot --nginx -n --agree-tos --email developerbishal01@gmail.com --domains {{ item }}"
+  loop:
+    - '54.225.27.118'
+    - '35.172.115.194'
+  notify: Restart nginx server
+
+- name: Test certificate renewal
+  command: "certbot renew --dry-run"

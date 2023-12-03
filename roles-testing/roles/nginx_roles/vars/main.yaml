@@ -2,3 +2,9 @@ user_name: Bishal Rayamajhi
 machine_name: Centos
 debian_machine_nginx__dest_path: /var/www/html/index.html
 redhat_machine_nginx__dest_path: /usr/share/nginx/html/index.html
+debian_machine_nginx_serving_directory: /var/www/html
+redhat_machine_nginx_serving_directory: /usr/share/nginx/html
+
+certbot_dependency:
+- certbot
+- python3-certbot-nginx

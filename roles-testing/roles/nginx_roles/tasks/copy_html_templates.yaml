@@ -1,4 +1,4 @@
-- name: Copy html template to the redhat machine
+- name: Copy html template to the respected machine
   template:
     src: templates/welcome.j2
     dest: "{{ redhat_machine_nginx__dest_path if ansible_os_family == 'RedHat' else debian_machine_nginx__dest_path }}"

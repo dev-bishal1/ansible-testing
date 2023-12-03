@@ -1,0 +1,11 @@
+- name: Copy nginx configuration files to all the machine
+  ansible.builtin.copy:
+    src: files/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    mode: '0644'
+    backup: yes
+  vars:
+    root_dir: "{{ debian_machine_nginx_serving_directory if ansible_os_family == 'Debian' else redhat_machine_nginx_serving_directory }}"
+    domain_name: "{{ '54.225.27.118' if ansible_os_family == 'Debian' else '35.172.115.194' }}"
+  notify: Restart nginx server
