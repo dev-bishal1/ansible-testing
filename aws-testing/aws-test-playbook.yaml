@@ -25,7 +25,5 @@
         region: us-east-1
         wait: yes
         exact_count: 1
-        instance_tags:
-          Name: machine_01
-        count_tag:
+        tags:
           Name: machine_01
