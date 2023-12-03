@@ -24,6 +24,6 @@
         image_id: ami-0230bd60aa48260c6
         region: us-east-1
         wait: yes
-        exact_count: 1
+        exact_count: 2
         tags:
           Name: machine_01
