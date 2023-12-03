@@ -13,7 +13,7 @@
 - name: Copy html template to the debain machine
   template:
     src: templates/welcome.j2
-    dest: /usr/share/nginx/html/index.html
+    dest: /var/www/html/index.html
     mode: '0644'
     owner: root
   vars:
