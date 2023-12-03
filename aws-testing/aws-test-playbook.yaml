@@ -18,7 +18,8 @@
         dest: ./test-key-pair.pem
       when: keyout.changed
 
-    - ec2:
+    - ec2_instance:
+        name: "Amazon ami"
         key_name: test-key-pair
         instance_type: t2.micro
         image: ami-0230bd60aa48260c6
