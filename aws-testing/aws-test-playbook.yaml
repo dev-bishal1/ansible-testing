@@ -22,7 +22,7 @@
         name: "Amazon ami"
         key_name: test-key-pair
         instance_type: t2.micro
-        image: ami-0230bd60aa48260c6
+        image_id: ami-0230bd60aa48260c6
         region: us-east-1
         wait: yes
         count: 1
