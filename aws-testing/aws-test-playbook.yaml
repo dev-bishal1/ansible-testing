@@ -8,6 +8,12 @@
         region: us-east-1
       register: keyout
 
-    - name: Debug the generated key
-      debug:
-        var: keyout
+    # - name: Debug the generated key
+    #   debug:
+    #     var: keyout
+      
+    - name: Save the generated private key to the file
+      copy:
+        content: "{{keyout.key.private_key}}"
+        dest: ./test-key-pair.pem
+      when: keyout.changed
