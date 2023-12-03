@@ -1,24 +1,23 @@
 - name: Copy html template to the redhat machine
   template:
     src: templates/welcome.j2
-    dest: /usr/share/nginx/html/index.html
+    dest: "{{ redhat_machine_nginx__dest_path if ansible_os_family == 'RedHat' else debian_machine_nginx__dest_path }}"
     mode: '0644'
     owner: root
   vars:
-    machine_name: Centos
-  when: ansible_os_family == 'RedHat'
+    machine_name: "{{ 'Centos' if ansible_os_family == 'RedHat' else 'Ubuntu' }}"
   notify:
     - Restart nginx server
 
-- name: Copy html template to the debain machine
-  template:
-    src: templates/welcome.j2
-    dest: /var/www/html/index.html
-    mode: '0644'
-    owner: root
-  vars:
-    machine_name: Ubuntu
-  when: ansible_os_family == 'Debian'
-  notify:
-    - Restart nginx server
+# - name: Copy html template to the debain machine
+#   template:
+#     src: templates/welcome.j2
+#     dest: /var/www/html/index.html
+#     mode: '0644'
+#     owner: root
+#   vars:
+#     machine_name: Ubuntu
+#   when: ansible_os_family == 'Debian'
+#   notify:
+#     - Restart nginx server
   

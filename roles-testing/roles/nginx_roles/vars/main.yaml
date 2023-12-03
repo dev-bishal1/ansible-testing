@@ -1,2 +1,4 @@
 user_name: Bishal Rayamajhi
 machine_name: Centos
+debian_machine_nginx__dest_path: /var/www/html/index.html
+redhat_machine_nginx__dest_path: /usr/share/nginx/html/index.html
