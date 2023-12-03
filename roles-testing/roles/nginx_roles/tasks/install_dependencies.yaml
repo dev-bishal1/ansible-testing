@@ -2,6 +2,12 @@
   apt:
     update_cache: yes
   when: ansible_os_family == "Debian"
+
+- name: Add the EPEL repository incase nginx is not available in offical redhat repository
+  yum:
+    name: epel-release
+    state: present
+  when: ansible_pkg_mgr == "yum"
   
 - name: Install nginx package in redhat os
   yum: 
