@@ -1,6 +1,6 @@
 avendi_marketplace_user ansible_host=
 avendi_marketplace_admin_panel ansible_host=
-avendi_marketplace_api ansible_host=172.31.0.183
+avendi_marketplace_api ansible_host=34.207.89.156
 
 [avendi_marketplace_web_server_group]
 avendi_marketplace_user
