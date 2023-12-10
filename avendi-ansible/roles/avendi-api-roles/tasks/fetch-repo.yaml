@@ -2,6 +2,7 @@
   ansible.builtin.git:
     repo: git@github.com:dev-bishal1/market-place-api.git
     dest: /home/centos/market-place-api/
+    key_file: /home/centos/.ssh/id_rsa
     accept_hostkey: true
   environment:
     SSH_AUTH_SOCK: "{{ lookup('env', 'SSH_AUTH_SOCK') }}"
