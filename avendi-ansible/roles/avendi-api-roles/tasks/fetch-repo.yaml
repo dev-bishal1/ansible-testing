@@ -3,3 +3,6 @@
     repo: git@github.com:dev-bishal1/market-place-api.git
     dest: /home/centos/
     accept_hostkey: true
+    environment:
+      SSH_AUTH_SOCK: "{{ lookup('env', 'SSH_AUTH_SOCK') }}"
+      SSH_AGENT_PID: "{{ lookup('env', 'SSH_AGENT_PID') }}"
