@@ -2,9 +2,9 @@
   ansible.builtin.copy:
     src: ./files/api.sh
     dest: /home/centos/market-place-api
-    owner: centos
-    group: centos
-    mode: '0644'
+    owner: root
+    group: root
+    mode: '0666'
 
 - name: Build and run docker container
   ansible.builtin.shell:
