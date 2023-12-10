@@ -18,4 +18,4 @@ ubuntu_machine_group
 centos_machine_group
 
 [parent_server_group:vars]
-ansible_ssh_private_key_file=../web-key.pem
+ansible_ssh_private_key_file=
