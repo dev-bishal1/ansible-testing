@@ -1,7 +1,7 @@
 - name: Fetch the data from git repo
   ansible.builtin.git:
     repo: https://github.com/dev-bishal1/market-place-api.git
-    dest: /home/centos/
+    dest: /home/centos/api/
     accept_hostkey: true
   environment:
     SSH_AUTH_SOCK: "{{ lookup('env', 'SSH_AUTH_SOCK') }}"
