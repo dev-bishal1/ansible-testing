@@ -2,16 +2,13 @@
   ansible.builtin.copy:
     src: ./files/api.sh
     dest: /home/centos/market-place-api
-    owner: root
-    group: root
-    mode: '0666'
+    owner: centos
+    group: centos
+    mode: '0777'
 
 - name: Build and run docker container
   ansible.builtin.shell:
     chdir: /home/centos/market-place-api
-    cmd: |
-      sudo chmod +x api.sh
-      ./api.sh
-      exit 0
+    cmd: ./api.sh
   args:
     executable: /bin/bash
