@@ -19,14 +19,16 @@
     gpgcheck: yes
     gpgkey: https://download.docker.com/linux/centos/gpg
     enabled: yes
-  notify: Restart docker
+  notify:
+    - Restart docker
 
 - name: Install docker in centos 
   yum:
     name: "{{ docker_dependency }}"
     state: present
   when: ansible_pkg_mgr == "yum"
-  notify: Start and enable docker
+  notify:
+    - Start and enable docker
 
 - name: Add user to the docker group
   ansible.builtin.user:
@@ -34,7 +36,8 @@
     group: docker
     append: true
   when: ansible_pkg_mgr == "yum"
-  notify: Restart docker
+  notify:
+    - Restart docker
 
 
         
