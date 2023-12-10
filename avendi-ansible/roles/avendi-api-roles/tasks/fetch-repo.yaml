@@ -1,6 +1,6 @@
 - name: Fetch the data from git repo
   ansible.builtin.git:
-    repo: https://github.com/dev-bishal1/market-place-api.git
+    repo: git@github.com:dev-bishal1/market-place-api.git
     dest: /home/centos/market-place-api/
     accept_hostkey: true
   environment:
