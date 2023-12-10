@@ -4,17 +4,22 @@
     state: absent
   when: ansible_pkg_mgr == "yum"
 
-- name: Add the EPEL repository incase installing package is not available in offical redhat repository
-  yum:
-    name: epel-release
-    state: present
-  when: ansible_pkg_mgr == "yum"
 
 - name: Setup the repository for docker 
   yum:
     name: yum-utils
     state: present
   when: ansible_pkg_mgr == "yum"
+
+- name: Add Docker repository
+  yum_repository:
+    name: docker-ce
+    description: Docker CE Stable - $basearch
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/centos/gpg
+    enabled: yes
+  notify: Restart Docker
 
 - name: Install docker in centos 
   yum:
@@ -33,3 +38,5 @@
 
 
         
+# sudo yum install -y yum-utils
+# sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
