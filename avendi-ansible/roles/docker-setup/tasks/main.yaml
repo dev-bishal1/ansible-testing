@@ -32,10 +32,11 @@
 
 - name: Add user to the docker group
   ansible.builtin.user:
-    name: "{{ docker_access_user_redhat }}"
+    name: "{{ item }}"
     group: docker
     append: true
   when: ansible_pkg_mgr == "yum"
+  loop: "{{ docker_access_user_redhat }}"
   notify:
     - Restart docker
 
