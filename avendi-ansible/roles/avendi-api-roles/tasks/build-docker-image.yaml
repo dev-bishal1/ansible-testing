@@ -9,6 +9,9 @@
 - name: Build and run docker container
   ansible.builtin.shell:
     chdir: /home/centos/market-place-api
-    cmd: ./api.sh
+    cmd: |
+      sudo chmod +x api.sh
+      ./api.sh
+      exit 0
   args:
     executable: /bin/bash
