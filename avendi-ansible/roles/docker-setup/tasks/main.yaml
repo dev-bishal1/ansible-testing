@@ -19,7 +19,7 @@
     gpgcheck: yes
     gpgkey: https://download.docker.com/linux/centos/gpg
     enabled: yes
-  notify: Restart Docker
+  notify: Restart docker
 
 - name: Install docker in centos 
   yum:
