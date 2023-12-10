@@ -1,0 +1,29 @@
+- name: Remove old version of docker from centos machine if present
+  yum:
+    name: "{{ remove_old_docker_dependency }}"
+    state: absent
+  when: ansible_pkg_mgr == "yum"
+
+- name: Setup the repository for docker 
+  yum:
+    name: yum-utils
+    state: present
+  when: ansible_pkg_mgr == "yum"
+
+- name: Install docker in centos 
+  yum:
+    name: "{{ docker_dependency }}"
+    state: present
+  when: ansible_pkg_mgr == "yum"
+  notify: Start and enable docker
+
+- name: Add user to the docker group
+  ansible.builtin.user:
+    name: "{{ docker_access_user_redhat }}"
+    group: docker
+    append: true
+  when: ansible_pkg_mgr == "yum"
+  notify: Restart docker
+
+
+        

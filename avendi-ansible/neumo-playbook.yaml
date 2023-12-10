@@ -1,0 +1,8 @@
+- name: Set up a infrastrcutre to deploy avendi mareket place
+  hosts: avendi_marketplace_api
+  become: yes
+  roles: 
+    - docker-setup
+    # - avendi-api-roles
+    # - avendi-admin-panel-roles
+    # - avendig-guest-roles

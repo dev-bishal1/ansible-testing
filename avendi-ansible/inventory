@@ -1,0 +1,18 @@
+avendi_marketplace_user ansible_host=
+avendi_marketplace_admin_panel ansible_host=
+avendi_marketplace_api ansible_host=
+
+[avendi_marketplace_web_server_group]
+avendi_marketplace_user
+avendi_marketplace_admin_panel
+
+[avendi_marketplace_api_server_group]
+avendi_marketplace_api
+
+[avendi_marketplace_web_server_group:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=./keys/web-server-key.pem
+
+[avendi_marketplace_api_server_group]
+ansible_user=centos
+ansible_ssh_private_key_file=./keys/api-server-key.pem
